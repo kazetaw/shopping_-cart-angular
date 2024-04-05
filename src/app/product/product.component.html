@@ -1,0 +1,55 @@
+<div class="btn-group btn-group-justified">
+  <a class="btn btn-default" role="button"(click)="showAllProducts()" >Show All</a>
+  <a class="btn btn-default" role="button"(click)="filterByType('Tablet')">Tablet</a>
+  <a class="btn btn-default" role="button"(click)="filterByType('Smartphone')">Smartphone</a>
+  <a class="btn btn-default" role="button"(click)="filterByType('Laptop')">Laptop</a>
+  <div class="btn-group">
+    <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+      Dropdown <span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="#">Type 4</a></li>
+      <li><a href="#">Type 5</a></li>
+      <li><a href="#">Type 6</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Type 7</a></li>
+    </ul>
+  </div>
+</div>
+<!-- แสดงสินค้าตามประเภทที่เลือก -->
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col" *ngFor="let product of filteredArray; let i = index">
+        <div class="card bg-light mb-3">
+          <img [src]="product.imageUrl" alt="Product Image">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.decript }}</p>
+            <p class="card-text">Type: {{ product.type }}</p>
+            <p class="card-text">Price: {{ product.price }}</p>
+            <!-- <button (click)="showProductDetails(product)" class="btn btn-primary">View Details</button> -->
+            <a [routerLink]="['/product-detail', product.id,product.name]" class="btn btn-outline-secondary">Details</a>
+            <!-- <a [routerLink]="['/product-detail', product.id]" target="_blank" class="btn btn-outline-secondary">Details</a> -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.querySelectorAll('.card').forEach(card => {
+  card.addEventListener('click', () => {
+    card.style.backgroundColor = 'lightblue'; // เปลี่ยนสีพื้นหลังเมื่อคลิก
+    setTimeout(() => {
+      card.style.backgroundColor = ''; // เปลี่ยนกลับเป็นสีปกติ
+    }, 1000); // หลังจาก 1 วินาที
+  });
+});
+
+</script>
+
+<!-- <app-product-details [selectedProduct]="products"></app-product-details> -->
+
+<!-- Add Product Details Component with ngIf to check if selectedProduct exists -->
+<!-- <app-product-details [selectedProduct]="selectedProduct" *ngIf="selectedProduct"></app-product-details> -->

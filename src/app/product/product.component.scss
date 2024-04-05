@@ -1,0 +1,16 @@
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+  }
+  .card img {
+    width: 100%; /* ทำให้รูปภาพเต็มกว้างของการ์ด */
+    height: 100%; /* ทำให้รูปภาพเต็มสูงของการ์ด */
+    object-fit: cover; /* ทำให้รูปภาพเต็มพื้นที่โดยไม่เอียงหรือย่อ-ขยาย */
+  }
+  p{
+    font-family: "Noto Sans Thai", sans-serif;
+
+  }
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@100..900&display=swap')
