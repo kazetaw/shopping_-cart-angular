@@ -1,55 +1,77 @@
-<div class="btn-group btn-group-justified">
-  <a class="btn btn-default" role="button"(click)="showAllProducts()" >Show All</a>
-  <a class="btn btn-default" role="button"(click)="filterByType('Tablet')">Tablet</a>
-  <a class="btn btn-default" role="button"(click)="filterByType('Smartphone')">Smartphone</a>
-  <a class="btn btn-default" role="button"(click)="filterByType('Laptop')">Laptop</a>
-  <div class="btn-group">
-    <a class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-      Dropdown <span class="caret"></span></a>
-    <ul class="dropdown-menu" role="menu">
-      <li><a href="#">Type 4</a></li>
-      <li><a href="#">Type 5</a></li>
-      <li><a href="#">Type 6</a></li>
-      <li class="divider"></li>
-      <li><a href="#">Type 7</a></li>
-    </ul>
-  </div>
-</div>
-<!-- แสดงสินค้าตามประเภทที่เลือก -->
-<div class="album py-5 bg-light">
-  <div class="container">
+<body>
+  <div class="container py-5">
+    <div class="btn-group btn-group-justified">
+      <a class="btn btn-default btn-type" role="button" (click)="showAllProducts()"
+        [class.active]="selectedType === 'All'">Show All</a>
+      <a class="btn btn-default btn-type" role="button" (click)="filterByType('Tablet')"
+        [class.active]="selectedType === 'Tablet'">Tablet</a>
+      <a class="btn btn-default btn-type" role="button" (click)="filterByType('Smartphone')"
+        [class.active]="selectedType === 'Smartphone'">Smartphone</a>
+      <a class="btn btn-default btn-type" role="button" (click)="filterByType('Laptop')"
+        [class.active]="selectedType === 'Laptop'">Laptop</a>
+    
+      </div>
     <div class="row row-cols-1 row-cols-md-3 g-4">
-      <div class="col" *ngFor="let product of filteredArray; let i = index">
-        <div class="card bg-light mb-3">
-          <img [src]="product.imageUrl" alt="Product Image">
-          <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">{{ product.decript }}</p>
-            <p class="card-text">Type: {{ product.type }}</p>
-            <p class="card-text">Price: {{ product.price }}</p>
-            <!-- <button (click)="showProductDetails(product)" class="btn btn-primary">View Details</button> -->
-            <a [routerLink]="['/product-detail', product.id,product.name]" class="btn btn-outline-secondary">Details</a>
-            <!-- <a [routerLink]="['/product-detail', product.id]" target="_blank" class="btn btn-outline-secondary">Details</a> -->
-
+      <div class="col-md-6 col-lg-4" *ngFor="let product of filteredArray; let i = index">
+        <div class="card text-black" (click)="showProductDetails(product)">
+          <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
+          <img [src]="product.imageUrl" class="card-img-top" alt="Apple Computer" />
+          <div class="card-body text-wrap">
+            <div class="text-center">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="text-muted mb-4">{{ product.type }}</p>
+            </div>
+            <div class="color" style="display: flex;">
+              <div class="color-picker">
+                <label for="pink" class="color-label pink"></label>
+                
+                <label for="red" class="color-label red"></label>
+                
+                <label for="black" class="color-label black"></label>
+                
+                <label for="white" class="color-label white"></label>
+              
+              </div><br><br>
+              
+            </div>
+            <div>
+              <div class="d-flex justify-content-between">
+                <span>Pro Display XDR</span><span>${{ product.price }}</span>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span>Pro stand</span><span>$999</span>
+              </div>
+              <div class="d-flex justify-content-between">
+                <span>Vesa Mount Adapter</span><span>$199</span>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between total font-weight-bold mt-4">
+              <span style="color: red; margin-top: 0.6rem;font-weight: 500;">${{ product.price }}</span><span></span>
+              <a [routerLink]="['/product-detail', product.id,product.name]"
+              class="btn btn-outline-secondary mt-auto">Details</a>
+            </div>
+            <div class="">
+              <!-- <a [routerLink]="['/product-detail', product.id,product.name]"
+                class="btn btn-outline-secondary mt-auto">Details</a> -->
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<script>
-  document.querySelectorAll('.card').forEach(card => {
-  card.addEventListener('click', () => {
-    card.style.backgroundColor = 'lightblue'; // เปลี่ยนสีพื้นหลังเมื่อคลิก
-    setTimeout(() => {
-      card.style.backgroundColor = ''; // เปลี่ยนกลับเป็นสีปกติ
-    }, 1000); // หลังจาก 1 วินาที
-  });
-});
 
-</script>
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha384-DrGAe01GgoOvM6yPgeX6aGwURcStGc+q3+Xr34jKc5s/La3BrqYFSmOoyOPdX1R0" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.12.0/dist/umd/popper.min.js"
+    integrity="sha384-wsfTJBFlXdW1RNGb8m3fISB/xM0n61UlJLOIXNGS1f4W3fM/GKdSSo5NhN6xHlFN" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+    integrity="sha384-tjndCk2d6Eq/cIl3XOpPqubJTNkVyp4vGQx6L7GMIodTfFi9M4TEycq7OLRtr3VT" crossorigin="anonymous">
+  </script>
 
-<!-- <app-product-details [selectedProduct]="products"></app-product-details> -->
+  <!-- Angular and App Scripts -->
+  <!-- Add your Angular app scripts here -->
+</body>
 
-<!-- Add Product Details Component with ngIf to check if selectedProduct exists -->
-<!-- <app-product-details [selectedProduct]="selectedProduct" *ngIf="selectedProduct"></app-product-details> -->

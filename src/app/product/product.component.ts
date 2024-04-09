@@ -1,12 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ProductService } from '../product.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
+
 export class ProductComponent implements OnInit{
+  @ViewChild('dropdown')
+  dropdown!: ElementRef;
+
   name: string = '';
   imageUrl: string = ''; // เพิ่ม imageUrl เพื่อใช้ในแต่ละ Product
   decript: string = '';
@@ -18,6 +23,7 @@ export class ProductComponent implements OnInit{
   selectedProduct: any; // Property to store the selected product for details view
 
   products: any[] = []; // สร้างตัวแปร products แบบ Array
+product: any;
 
 
   constructor(private productService: ProductService) { }
@@ -42,6 +48,9 @@ export class ProductComponent implements OnInit{
   showProductDetails(product: any) {
     this.selectedProduct = product; // Set the selected product for details view
   }
+  // toggleDropdown() {
+  //   this.dropdown.nativeElement.classList.toggle('show');
+  // }
   // getProductByID(id: number):any{
   //   const products = this.id();
 
