@@ -186,3 +186,141 @@ label.radio input {
 label.radio {
   cursor: pointer;
 }
+
+.radio input[type="radio"] {
+  display: none; /* ซ่อน input radio จริงๆ */
+}
+
+.radio label {
+  display: inline-block;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.radio span {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+/* สร้างเอฟเฟคเมื่อ hover */
+.radio span:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* สร้างเอฟเฟคเมื่อเลือก */
+.radio input[type="radio"]:checked + span {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 2px solid #007bff; /* เพิ่มกรอบสีเมื่อถูกเลือก */
+}
+label.radio-2 span {
+  padding: 1vh 4vh;
+  background-color: rgb(255, 255, 255);
+  color: grey;
+  display: inline-block;
+  margin-right: 2vh;
+}
+label.radio-2 input:checked + span {
+  border: 1px solid white;
+  padding: 1vh 4vh;
+  border: 2px solid #007bff; /* เพิ่มกรอบสีเมื่อถูกเลือก */
+
+  margin-right: 2vh;
+  color: #000000;
+  display: inline-block;
+}
+label.radio-2 input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+label.radio-2 {
+  cursor: pointer;
+}
+
+.radio-2 input[type="radio-2"] {
+  display: none; /* ซ่อน input radio จริงๆ */
+}
+
+.radio-2 label {
+  display: inline-block;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.radio span {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+/* สร้างเอฟเฟคเมื่อ hover */
+
+/* สร้างเอฟเฟคเมื่อเลือก */
+.radio input[type="radio"]:checked + span {
+  border: 2px solid #007bff; /* เพิ่มกรอบสีเมื่อถูกเลือก */
+}
+.color-picker {
+  display: contents;
+  
+}
+.color-label {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.pink {
+  background-color: pink;
+}
+
+.red {
+  background-color: red;
+}
+
+.black {
+  background-color: black;
+}
+
+.white {
+  background-color: rgb(126, 126, 126);
+}
+input.btn-check:checked + label.btn-outline-light {
+  border-color: blue;
+
+}
+.custom-btn {
+  display: inline-block;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #fff;
+  background-color: #007bff;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  text-decoration: none;
+}
+.custom-btn:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+.custom-btn:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
+}

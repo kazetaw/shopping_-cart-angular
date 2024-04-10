@@ -1,0 +1,31 @@
+.card {
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้กับ card */
+  }
+  
+  .btn-link {
+    color: #007bff; /* ตั้งสีข้อความปุ่ม Edit Address เป็นสีน้ำเงิน */
+  }
+  
+  .btn-link:hover {
+    text-decoration: underline; /* เมื่อโฮเวอร์ที่ปุ่ม Edit Address ให้มีขีดเส้นใต้ */
+  }
+  
+  .radio input[type="radio"] {
+    display: none; /* ซ่อน input radio */
+  }
+  
+  .radio input[type="radio"] + span {
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 4px;
+  }
+  
+  .radio input[type="radio"]:checked + span {
+    background-color: #007bff;
+    color: #fff;
+  }
+  .d-flex.flex-column {
+    flex-grow: 1;
+    padding: 50%;
+  }
+  

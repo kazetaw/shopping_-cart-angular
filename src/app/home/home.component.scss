@@ -4,5 +4,10 @@
     border-radius: 100%;
 }
 section{
-    margin-top: 5rem;
+    margin-top: 4rem;
 }
+.carousel-item img {
+    object-fit: cover;
+    height: auto; /* ปรับขนาดภาพให้เป็นขนาดเท่ากัน */
+  }
+  

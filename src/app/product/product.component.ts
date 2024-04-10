@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ProductService } from '../product.service';
 import * as $ from 'jquery';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -26,7 +27,7 @@ export class ProductComponent implements OnInit{
 product: any;
 
 
-  constructor(private productService: ProductService) { }
+constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit() :void{
     this.products = this.productService.products;
@@ -48,6 +49,8 @@ product: any;
   showProductDetails(product: any) {
     this.selectedProduct = product; // Set the selected product for details view
   }
+  navigateToProductDetail(productId: string, productName: string) {
+    this.router.navigate(['/product-detail', productId, productName]);
   // toggleDropdown() {
   //   this.dropdown.nativeElement.classList.toggle('show');
   // }
@@ -56,4 +59,4 @@ product: any;
 
 
   // }
-}
+}}

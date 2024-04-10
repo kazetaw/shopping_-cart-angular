@@ -1,123 +1,92 @@
-<!-- <div *ngIf="selectedProduct" class="product-details">
-    <h2>{{ selectedProduct.name }}</h2>
-    <img [src]="selectedProduct.imageUrl" alt="Product Image">
-    <p>Description: {{ selectedProduct.decript }}</p>
-    <p>Type: {{ selectedProduct.type }}</p>
-    <p>Price: {{ selectedProduct.price }}</p>
-</div>
-<div *ngIf="!selectedProduct">
-    <p>No product selected.</p>
-</div> -->
-<!-- product-detail.component.html -->
-<!-- <div *ngIf="product">
-    <h2>{{ product.name }}</h2>
-    <img [src]="product.imageUrl" alt="Product Image">
-    <p>{{ product.description }}</p>
-    <p>Type: {{ product.type }}</p>
-    <p>Price: {{ product.price }}</p>
-  </div> -->
 <app-nav></app-nav>
-<!-- <section style="background-color: #eee;">
-    <div class="container py-5">
-      <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6 col-xl-4">
-          <div class="card" style="border-radius: 15px;">
-            <div class="bg-image hover-overlay ripple ripple-surface ripple-surface-light"
-              data-mdb-ripple-color="light">
-              <img [src]="product.imageUrl"
-                style="border-top-left-radius: 15px; border-top-right-radius: 15px;" class="img-fluid"
-                alt="Laptop" />
-              <a href="#!">
-                <div class="mask"></div>
-              </a>
-            </div>
-            <div class="card-body pb-0">
-              <div class="d-flex justify-content-between">
-                <div>
-                  <p>{{ product.name }}</p>
-                  <p class="small text-muted">{{ product.type }}</p>
-                  <p class="small text-muted">{{ product.decript }}</p>
-                </div>
-                <div>
-                  <div class="d-flex flex-row justify-content-end mt-1 mb-4 text-danger">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+
+<section class="vh-100" style="background-color: #eee;">
+  <div class="container">
+    <div id="demo" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item d-flex justify-content-center align-items-center">
+          <div class="card">
+            <div class="path">HOME / {{product.type}} <a>/ {{product.name}}</a> </div>
+            <div class="row">
+              <div class="col-md-6 col-12 text-center align-self-center">
+                <img class="img-fluid" [src]="product.imageUrl">
+              </div>
+              <div class="col-md-6 col-12 info">
+                <div class="row title">
+                  <div class="col">
+                    <h5 class="card-title">{{ product.name }}</h5>
                   </div>
                 </div>
+                <p>{{product.decript}}</p>
+                <div>
+                  <label style="font-weight: 500;">Color.</label>
+                  <span>Pick your favorite color.
+                  </span><br>
+                  <label class="radio-2">
+                    <input type="radio" name="color" value="pink" checked>
+                    <span>              
+                      <label for="pink" class="color-label pink "></label>
+                      Pink</span>
+                  </label>
+                  <label class="radio-2">
+                    <input type="radio" name="color" value="">
+                    <span>                       <label for="black" class="color-label red "></label>
+                      Red</span>
+                  </label>
+                  <label class="radio-2">
+                    <input type="radio" name="color" value="">
+                    <span><label for="black" class="color-label black "></label>
+                      Black</span>
+                  </label>
+                </div> <br>
+                <label style="font-weight: 500;">Storage.</label><span>Choose how much space you’ll need.</span>
+                <div>
+                  <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked>
+                  <label class="btn btn-outline-secondary" for="success-outlined">64 GB</label>
+                  &nbsp;
+                  <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
+                  <label class="btn btn-outline-secondary" for="danger-outlined">256 GB</label>
+                </div>
+                <div class="row price">
+                  <!-- <label class="radio">
+                    <input type="radio" name="size1" value="small" checked>
+                    <span>${{product.price}}</span>
+                  </label> -->
+                  <!-- <span style="color: red; font-weight: bold;">${{product.price}}</span> -->
+
+                  <!-- <label class="radio">
+                    <input type="radio" name="size1" value="large">
+                    <span>$93.85</span>
+                  </label> -->
+                </div>
+                <div class="col text-right align-self-center">
+                  <!-- <button class="btn">Add to cart</button> -->
+                  <!-- <button type="button" class="btn btn-outline-primary">Primary</button> -->
+                </div>
               </div>
             </div>
-            <hr class="my-0" />
-            <div class="card-body pb-0">
-              <div class="d-flex justify-content-between">
-                <p><a href="#!" class="text-dark">${{ product.price }}</a></p>
+            <div class="row lower">
+              <div class="col">
+                <a class="carousel-control-prev" href="#demo" data-slide="prev"></a>
+                <a class="carousel-control-next" href="#demo" data-slide="next"></a>
               </div>
-              <p class="small text-muted">{{ product.type }}</p>
-            </div>
-            <hr class="my-0" />
-            <div class="card-body">
-              <div class="d-flex justify-content-between align-items-center pb-2 mb-1">
-                <a href="#!" class="text-dark fw-bold">${{ product.price }}</a>
-                <button class="button">Buy now</button>
-            </div>
+              <!-- <div class="col text-right align-self-center">
+                <button class="btn">Add to cart</button>
+              </div> -->
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button class="custom-btn" type="button" style="background-color:#0d6efd;">Add to Cart</button>
+              </div>
+              
             </div>
           </div>
         </div>
+        <div class="carousel-item"></div>
       </div>
     </div>
-  </section> -->
-
-<section class="vh-100" style="background-color: #eee;">
-    <div class="container">
-        <div id="demo" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item d-flex justify-content-center align-items-center">
-                    <div class="card">
-                        <div class="path">HOME / {{product.type}} <a>/ {{product.name}}</a> </div>
-                        <div class="row">
-                            <div class="col-md-6 text-center align-self-center"> <img class="img-fluid"
-                                    [src]="product.imageUrl"> </div>
-                            <div class="col-md-6 info">
-                                <div class="row title">
-                                    <div class="col">
-                                        <h2>{{product.name}}</h2>
-                                    </div>
-                                    <div class="col text-right"><a href="#"><i class="fa fa-heart-o"></i></a></div>
-                                </div>
-                                <p>{{product.decript}}</p> <span class="fa fa-star checked"></span> <span
-                                    class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span
-                                    class="fa fa-star checked"></span> <span class="fa fa-star-half-full">
-
-                                </span> <span id="reviews"></span>
-                                <div class="row price"> <label class="radio"> <input type="radio" name="size1"
-                                            value="small" checked>
-                                        <span>
-                                            <div class="row">${{product.price}}</div>
-                                        </span> </label> <label class="radio"><input type="radio" name="size1"
-                                            value="large"> <span>
-                                            <div class="row">$93.85</div>
-                                        </span> </label> </div>
-                            </div>
-                        </div>
-                        <div class="row lower">
-                            <div class="col"> 
-                                <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                                   
-                                </a> 
-                                <a class="carousel-control-next" href="#demo"
-                                    data-slide="next">
-                                </a> </div>
-                            <div class="col text-right align-self-center">
-                                <button class="btn">Add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
 </section>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-DrGAe01GgoOvM6yPgeX6aGwURcStGc+q3+Xr34jKc5s/La3BrqYFSmOoyOPdX1R0" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.12.0/dist/umd/popper.min.js" integrity="sha384-wsfTJBFlXdW1RNGb8m3fISB/xM0n61UlJLOIXNGS1f4W3fM/GKdSSo5NhN6xHlFN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-tjndCk2d6Eq/cIl3XOpPqubJTNkVyp4vGQx6L7GMIodTfFi9M4TEycq7OLRtr3VT" crossorigin="anonymous"></script>

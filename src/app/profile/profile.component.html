@@ -1,8 +1,8 @@
 <app-nav></app-nav>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-<section class="vh-100" style="background-color: #eee;">
-  <div class="container py-5 h-100">
+<section class="vh-200" style="background-color: #eee;">
+  <div style="margin-top: 5rem;" class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-md-12 col-xl-4">
 
@@ -12,10 +12,26 @@
               <img src="https://media.istockphoto.com/photos/portrait-of-handsome-smiling-young-man-with-crossed-arms-picture-id1200677760?k=6&m=1200677760&s=612x612&w=0&h=IXURU5rnCRyN5h5ebeDLQcVv0lNs0ZLgE98fPioSMnQ="
                 class="rounded-circle img-fluid" style="width: 120px;" />
             </div>
-            <h4 class="mb-2">Julie L. Arsenault</h4>
-            <p class="text-muted mb-4">@Customer <span class="mx-2">|</span> <a
-                href="#!">customer@gmail.com</a></p>
-            <p class="text-muted mb-4">Address:  {{address}}</p>
+            <h4 class="mb-2">{{ name }}</h4>
+            <br><br>
+            <p class="text-muted mb-4"> ชื่อผู้ใช้ : {{ username }} <span class="mx-2">|</span> <a
+                href="#!">{{ email }}</a></p>
+            <p class="text-muted mb-4">ที่อยู่:  {{ address }}</p>
+            <p>หมายเลขโทรศัพท์ : {{ phone }}</p>
+            <label class="radio">
+              <input type="radio" name="gender" [(ngModel)]="gender" value="male">
+              <span> ชาย</span>&nbsp;
+            </label>
+            <label class="radio">
+              <input type="radio" name="gender" [(ngModel)]="gender" value="female">
+              <span> หญิง</span> &nbsp;
+            </label>
+            <label class="radio">
+              <input type="radio" name="gender" [(ngModel)]="gender" value="other">
+              <span> อื่นๆ</span>&nbsp;
+            </label><br><br>
+            <p>วัน/เดือน/ปี เกิด : {{ birthday }}</p>
+            <br>
             <div class="d-flex justify-content-between text-center mt-5 mb-2">
               <div>
                 <p class="mb-2 h5">8471</p>
@@ -31,16 +47,86 @@
               </div>
             </div>
             <!-- Edit address button -->
-            <div class="d-flex justify-content-end">
-              <button class="btn btn-link text-secondary" (click)="editAddress()">
-                <i class="fas fa-edit"></i> Edit Address
+            <div class="d-flex justify-content-end mt-3">
+              <!-- แก้ไขเป็นเรียกใช้ฟังก์ชั่น editProfile() ที่เพิ่มมาก่อนหน้า -->
+              <button class="btn btn-link text-secondary" (click)="editProfile()">
+                <i class="fas fa-edit me-1"></i>  แก้ไขข้อมูลส่วนตัว
               </button>
+              <br>
+              <br>
+              <br>
+              
             </div>
           </div>
         </div>
 
       </div>
+      <!-- Form when Click Edit -->
+      <div *ngIf="editingMode" class="col-md-12 col-xl-8 mt-3" style="z-index: 1;">
+        <div class="card" style="border-radius: 10px;">
+          <div class="card-body">
+            <h3 style="font-weight: bold;">Edit Profile</h3>
+            <form (submit)="saveChanges()" class="d-flex flex-column">
+              <div class="mb-3 d-flex flex-column align-items-start">
+                <label for="nameInput" class="form-label mb-1">Name</label>
+                <input type="text" class="form-control flex-grow-1" id="nameInput" [(ngModel)]="name" name="name" required>
+              </div>
+
+              <div class="mb-3 d-flex flex-column align-items-start">
+                <label for="usernameInput" class="form-label mb-1">Username</label>
+                <input type="text" class="form-control flex-grow-1" id="usernameInput" [(ngModel)]="username" name="username" required>
+              </div>
+
+              <div class="mb-3 d-flex flex-column align-items-start">
+                <label for="emailInput" class="form-label mb-1">Email</label>
+                <input type="email" class="form-control flex-grow-1" id="emailInput" [(ngModel)]="email" name="email" required>
+              </div>
+            
+              <div class="mb-3 d-flex flex-column align-items-start">
+                <label for="addressInput" class="form-label mb-1">Address</label>
+                <textarea class="form-control flex-grow-1" id="addressInput" [(ngModel)]="address" name="address" required></textarea>
+              </div>
+            
+              <div class="mb-3 d-flex flex-column align-items-start">
+                <label for="phoneInput" class="form-label mb-1">Phone</label>
+                <input type="tel" class="form-control flex-grow-1" id="phoneInput" [(ngModel)]="phone" name="phone" required>
+              </div>
+            
+              <div class="mb-3 d-flex flex-column align-items-start">
+                <label for="genderInput" class="form-label mb-1">Gender</label>
+                <select class="form-select flex-grow-1" id="genderInput" [(ngModel)]="gender" name="gender" required>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            
+              <div class="mb-3 d-flex flex-column align-items-start">
+                <label for="birthdayInput" class="form-label mb-1">Birthday</label>
+                <input type="date" class="form-control flex-grow-1" id="birthdayInput" [(ngModel)]="birthday" name="birthday" required>
+              </div>
+              <div class="text-end">
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-  <app-footer></app-footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const radios = document.querySelectorAll('.radio input[type="radio"]');
+    radios.forEach(radio => {
+      radio.addEventListener("change", () => {
+        radios.forEach(r => r.nextElementSibling.classList.remove("active"));
+        radio.nextElementSibling.classList.add("active");
+      });
+    });
+  });
+</script>
+
+<app-footer></app-footer>

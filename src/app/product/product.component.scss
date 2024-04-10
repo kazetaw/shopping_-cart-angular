@@ -56,16 +56,10 @@
     color: #fff; /* เพิ่มสีของตัวอักษรเมื่อโฟกัส */
   }
 //radio
-.color{
-  width: 300px; /* ปรับขนาดของ card ตามความต้องการ */
-  margin-left: 5rem; /* จัด card ไปอยู่ตรงกลางของหน้าจอ */
-  margin-top: 50px; /* ขยับ card ไปทางบนเล็กน้อย */
-  
-}
+
 .color-picker {
   display: contents;
   
-  align-items: center;
 }
 .color-label {
   width: 15px;
@@ -109,6 +103,13 @@
   background-color: #4d4d4d; /* เปลี่ยนสีพื้นหลังเมื่อปุ่มถูกเลือก */
   color: #fff; /* เปลี่ยนสีตัวอักษรเมื่อปุ่มถูกเลือก */
 }
+
+.card {
+  cursor: pointer; /* เมื่อโฮเวอร์หรือกดที่ Card จะเปลี่ยนเป็น cursor รูปมือ */
+}
+
+/* เพิ่มรูปมือเมื่อโฮเวอร์หรือกดที่ Card */
+
 
 
 
