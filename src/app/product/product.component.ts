@@ -24,15 +24,19 @@ export class ProductComponent implements OnInit{
   selectedProduct: any; // Property to store the selected product for details view
 
   products: any[] = []; // สร้างตัวแปร products แบบ Array
-product: any;
+  product: any;
+  colors: string[] = [];
 
 
-constructor(private productService: ProductService, private router: Router) { }
+constructor(private productService: ProductService, private router: Router) { 
+}
 
   ngOnInit() :void{
     this.products = this.productService.products;
 
     this.filteredArray = this.products; // เริ่มต้นโชว์สินค้าทั้งหมด
+    this.getProductColors();
+
   }
   filterByType(type: string) {
     this.selectedType = type; // เก็บประเภทที่ผู้ใช้เลือก
@@ -49,6 +53,7 @@ constructor(private productService: ProductService, private router: Router) { }
   showProductDetails(product: any) {
     this.selectedProduct = product; // Set the selected product for details view
   }
+  
   navigateToProductDetail(productId: string, productName: string) {
     this.router.navigate(['/product-detail', productId, productName]);
   // toggleDropdown() {
@@ -59,4 +64,17 @@ constructor(private productService: ProductService, private router: Router) { }
 
 
   // }
-}}
+}
+getProductColors() {
+  const products = this.productService.products;
+  for (const product of products) {
+    if (product.hasOwnProperty('color') && product.color && product.color.length > 0) {
+      product.color.forEach((color: string) => {
+        if (!this.colors.includes(color)) {
+          this.colors.push(color);
+        }
+      });
+    }
+  }
+}
+}

@@ -84,8 +84,45 @@
 }
 
 .white {
-  background-color: rgb(126, 126, 126);
+  background-color: white;
 }
+
+.blue {
+  background-color: rgb(30, 0, 255); /* หรือจะใช้ blue ตรงๆ ก็ได้ */
+}
+
+.silver {
+  background-color: silver;
+}
+
+.gold {
+  background-color: rgb(157, 147, 89);
+}
+
+.space-black {
+  background-color: #0d1117; /* หรือดำสเปซแบล็ค */
+}
+
+.dark-purple {
+  background-color: #6f42c1; /* หรือม่วงเข้ม */
+}
+
+.natural {
+  background-color: #d4cfc9; /* ไทเทเนียมธรรมชาติ */
+}
+
+.dark-green {
+  background-color: #22863a; /* หรือเขียวเข้ม */
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.orange {
+  background-color: orange;
+}
+
 
 .color-label:hover {
   border-color: rgba(0, 0, 0, 0.5); /* เปลี่ยนสีขอบเมื่อชี้เมาส์ hover */

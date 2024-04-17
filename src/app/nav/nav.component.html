@@ -1,13 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-custom fixed-top">
     <div class="container">
       <a [routerLink]="['/home']" class="navbar-brand">
-        <img src="/assets/product/logos.png"
-          class="me-2"
-          height="50"
-          alt="MDB Logo"
-          loading="lazy"/>
-        <!-- <small style="font-weight: bold;">IT SHOP</small> -->
+        <i class="bi bi-apple" style="font-size: 2rem;"></i>
       </a>
+      
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
         aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -17,9 +13,9 @@
           <li class="nav-item">
             <!-- <a class="nav-link" [routerLink]="['/catalog']">Detail</a> -->
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" [routerLink]="['/profile']">Profile</a>
-          </li>
+          </li> -->
           <!-- <li class="nav-item">
             <a class="nav-link disabled" [routerLink]="['/home']">Disabled</a>
           </li> -->
@@ -28,6 +24,17 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['/register']">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/register']"><i class="bi bi-bag"></i> 
+            </a>
+
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/profile']"><i class="bi bi-person " style="font-size: 1.4rem;"></i>
+
+            </a>
+
           </li>
         </ul>
       </div>

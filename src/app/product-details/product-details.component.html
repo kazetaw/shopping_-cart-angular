@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Myriad+Pro:wght@400;700&display=swap">
+
 <app-nav></app-nav>
 
 <section class="vh-100" style="background-color: #eee;">
@@ -15,13 +17,16 @@
                 <div class="row title">
                   <div class="col">
                     <h5 class="card-title">{{ product.name }}</h5>
+                    <h6 style="color: red; display: inline-block;">฿13,300 - ฿21,900</h6>
+                    &nbsp;&nbsp;<label style="color: #eee; font-weight: bold; display: inline-block; background-color: red;"> &nbsp;ประกันศูนย์ 1 ปี &nbsp;</label>
+                    
                   </div>
                 </div>
                 <p>{{product.decript}}</p>
                 <div>
                   <label style="font-weight: 500;">Color.</label>
                   <span>Pick your favorite color.
-                  </span><br>
+                  </span><br><br>
                   <label class="radio-2">
                     <input type="radio" name="color" value="pink" checked>
                     <span>              
@@ -39,14 +44,14 @@
                       Black</span>
                   </label>
                 </div> <br>
-                <label style="font-weight: 500;">Storage.</label><span>Choose how much space you’ll need.</span>
+                <!-- <label style="font-weight: 500;">Storage.</label><span>Choose how much space you’ll need.</span>
                 <div>
                   <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked>
                   <label class="btn btn-outline-secondary" for="success-outlined">64 GB</label>
                   &nbsp;
                   <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">
                   <label class="btn btn-outline-secondary" for="danger-outlined">256 GB</label>
-                </div>
+                </div> -->
                 <div class="row price">
                   <!-- <label class="radio">
                     <input type="radio" name="size1" value="small" checked>
@@ -85,6 +90,9 @@
     </div>
   </div>
 </section>
+
+<!-- detail more -->
+<app-footer></app-footer>
 
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-DrGAe01GgoOvM6yPgeX6aGwURcStGc+q3+Xr34jKc5s/La3BrqYFSmOoyOPdX1R0" crossorigin="anonymous"></script>
