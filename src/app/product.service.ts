@@ -1,3 +1,8 @@
+
+
+
+
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -5,11 +10,6 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ProductService {
-
-
-  private apiUrl = 'http://localhost:5432/api/data'; // ตั้งค่า URL ของ API ของคุณที่จะดึงข้อมูล
-
-
 
   // ตัวอย่างข้อมูลสินค้า
   products = [
@@ -20,7 +20,7 @@ export class ProductService {
       type: 'Tablet',
       decript: 'Serious performance in a thin and light design.',
       price: 55.25,
-      color:['red', 'black', 'pink', 'dark-purple'] // เพิ่มสีน้ำเงินลงไปที่นี่
+      color:['red', 'black', 'pink', 'dark-purple'] 
     },
     {
       id: 2,
@@ -70,7 +70,7 @@ export class ProductService {
       color: ['red', 'black','yellow'],
     },
   ];
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   getProductById(id: number) {
     const product = this.products.find((x) => x.id === id);
