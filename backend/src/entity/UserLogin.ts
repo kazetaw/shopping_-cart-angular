@@ -1,7 +1,7 @@
 // src/entities/user-login.entity.ts
 
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm';
-import { Customer } from './Customer ';
+import { Customer } from './Customer';
 
 @Entity()
 export class UserLogin {
