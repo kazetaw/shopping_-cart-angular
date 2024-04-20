@@ -51,7 +51,7 @@ constructor(
   //   this.product = data; // กำหนดข้อมูลผลิตภัณฑ์ที่ได้ให้กับตัวแปร product
   // });
 
-  this.product = this.productService.getProductById(+this.productId)
+  // this.product = this.productService.getProductById(+this.productId)
   console.log("🚀 ~ ProductDetailsComponent ~ ngOnInit ~ product:", this.product)
 }
 } 

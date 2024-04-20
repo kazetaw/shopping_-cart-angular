@@ -1,20 +1,20 @@
 <body>
   <div class="container py-5">
     <div class="btn-group btn-group-justified">
-      <a class="btn btn-default btn-type" role="button" (click)="showAllProducts()"
+      <!-- <a class="btn btn-default btn-type" role="button" (click)="showAllProducts()"
         [class.active]="selectedType === 'All'">Show All</a>
-      <a class="btn btn-default btn-type" role="button" (click)="filterByType('Tablet')"
+      <a class="btn btn-default btn-type" role="button" (click)="filterByType('1')"
         [class.active]="selectedType === 'Tablet'">Tablet</a>
-      <a class="btn btn-default btn-type" role="button" (click)="filterByType('Smartphone')"
+      <a class="btn btn-default btn-type" role="button" (click)="filterByType('1')"
         [class.active]="selectedType === 'Smartphone'">Smartphone</a>
-      <a class="btn btn-default btn-type" role="button" (click)="filterByType('Laptop')"
-        [class.active]="selectedType === 'Laptop'">Laptop</a>
-      </div>
+      <a class="btn btn-default btn-type" role="button" (click)="filterByType('1')"
+        [class.active]="selectedType === 'Laptop'">Laptop</a> -->
+    </div>
     <div class="row row-cols-1 row-cols-md-3 g-4">
-      <div class="col-md-6 col-lg-4" *ngFor="let product of filteredArray; let i = index">
-        <div class="card text-black" (click)="navigateToProductDetail(product.id, product.name)">
+      <div class="col-md-6 col-lg-4" *ngFor="let product of products; let i = index">
+        <div class="card text-black">
           <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
-          <img [src]="product.imageUrl" class="card-img-top" alt="Apple Computer" />
+          <img [src]="product.product?.p_img" class="card-img-top" alt="" />
           <!-- <div class="color" style="display: flex; justify-content: center; align-items: center;">
             <div class="color-picker">
               <label for="pink" class="color-label pink"></label>
@@ -23,28 +23,26 @@
               <label for="white" class="color-label white"></label>
             </div>
           </div> -->
-          
-<!-- ตำแหน่งที่ต้องการแสดงปุ่มสี -->
-<div class="color" style="display: flex; justify-content: center; align-items: center;">
-  <div class="color-picker">
-    <!-- ใช้ ngFor เพื่อวนลูปแสดงปุ่มสี -->
-    <label *ngFor="let color of product.color" [for]="color" class="color-label" [ngClass]="color"></label>
-  </div>
-</div>
+
+          <!-- ตำแหน่งที่ต้องการแสดงปุ่มสี -->
+          <div class="color" style="display: flex; justify-content: center; align-items: center;">
+          </div>
 
 
-          
-          
-          
+
+
+
           <div class="card-body text-wrap">
             <div class="text-center">
               <!-- <h5 class="card-title" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis;">{{ product.name }}</h5> -->
-              <h5 class="card-title text-truncate">{{ product.name }}</h5>
+              <h5 class="card-title text-truncate">{{product.product?.p_name}}</h5>
 
-              <h6 class="card-title text-truncate" style="color: #5f5f5f; font-size: 14px;">{{ product.decript }}</h6>
+              <h6 class="card-title text-truncate" style="color: #5f5f5f; font-size: 14px;">{{
+                product.product?.p_descript }}
+              </h6>
               <!-- <p class="text-muted mb-4">{{ product.type }}</p> -->
             </div>
-            
+
             <!-- <div>
               <div class="d-flex justify-content-between">
                 <span>Pro Display XDR</span><span>${{ product.price }}</span>
@@ -56,18 +54,19 @@
                 <span>Vesa Mount Adapter</span><span>$199</span>
               </div>
             </div> --> <br>
-            <div style="display: flex; justify-content: center;">
-              <span style="color: #3f3f3f; font-family: Arial, sans-serif; font-size: 15px;">From ${{product.price}}</span>
-            </div>
-            
-                        <!-- <div class="d-flex justify-content-between total font-weight-bold mt-4">
+            <!-- <div style="display: flex; justify-content: center;">
+              <span style="color: #3f3f3f; font-family: Arial, sans-serif; font-size: 15px;">From
+                ${{product.v_price}}</span>
+            </div> -->
+
+            <!-- <div class="d-flex justify-content-between total font-weight-bold mt-4">
               <span style="color: red; margin-top: 0.6rem;font-weight: 500;">${{ product.price }}</span><span></span>
               <a [routerLink]="['/product-detail', product.id,product.name]"
               class="btn btn-outline-secondary mt-auto">Details</a>
             </div> -->
             <div class="">
-              <!-- <a [routerLink]="['/product-detail', product.id,product.name]"
-                class="btn btn-outline-secondary mt-auto">Details</a> -->
+              <a [routerLink]="['/product-detail', product.product?.p_id,product.product?.p_name]"
+                class="btn btn-outline-secondary mt-auto">Details</a>
             </div>
           </div>
         </div>
@@ -78,15 +77,14 @@
   <!-- Bootstrap JS and dependencies -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha384-DrGAe01GgoOvM6yPgeX6aGwURcStGc+q3+Xr34jKc5s/La3BrqYFSmOoyOPdX1R0" crossorigin="anonymous">
-  </script>
+    </script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.12.0/dist/umd/popper.min.js"
     integrity="sha384-wsfTJBFlXdW1RNGb8m3fISB/xM0n61UlJLOIXNGS1f4W3fM/GKdSSo5NhN6xHlFN" crossorigin="anonymous">
-  </script>
+    </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
     integrity="sha384-tjndCk2d6Eq/cIl3XOpPqubJTNkVyp4vGQx6L7GMIodTfFi9M4TEycq7OLRtr3VT" crossorigin="anonymous">
-  </script>
+    </script>
 
   <!-- Angular and App Scripts -->
   <!-- Add your Angular app scripts here -->
 </body>
-

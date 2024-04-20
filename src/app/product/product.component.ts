@@ -1,8 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ProductService } from '../product.service';
-import * as $ from 'jquery';
 import { Router } from '@angular/router';
-
+import { ProductService } from '../product.service';
+import { Component, OnInit } from '@angular/core';
+import { Product, ProductVariants } from '../models/product.model';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -10,21 +9,17 @@ import { Router } from '@angular/router';
 })
 
 export class ProductComponent implements OnInit{
-  @ViewChild('dropdown')
-  dropdown!: ElementRef;
+  selectedType: string = 'All'; // กำหนดค่าเริ่มต้นให้ selectedType เป็น 'All' หรือหมวดหมู่ทั้งหมด
 
-  name: string = '';
-  imageUrl: string = ''; // เพิ่ม imageUrl เพื่อใช้ในแต่ละ Product
-  decript: string = '';
-  type: string = '';
-  price: any = null;
-  indexUpdate: number = 0;
-  selectedType: string = ''; // สร้างตัวแปรเพื่อเก็บประเภทที่เลือก
+  // สมมติว่ามีฟังก์ชัน filterByType ในคลาสนี้
+  filterByType(type: string): void {
+    this.selectedType = type; // กำหนดค่า selectedType ใหม่เมื่อคลิกที่ปุ่มหมวดหมู่
+    // ทำการเรียก API หรือการกรองข้อมูลตามประเภทที่เลือกไว้ และอัพเดตข้อมูลใหม่ใน products
+  }
   filteredArray: any[] = []; // สร้างตัวแปรเพื่อเก็บสินค้าที่ถูกกรองตามประเภทที่เลือก
   selectedProduct: any; // Property to store the selected product for details view
 
-  products: any[] = []; // สร้างตัวแปร products แบบ Array
-  product: any;
+  products: ProductVariants[] = []; // สร้างตัวแปร products แบบ Array
   colors: string[] = [];
 
 
@@ -32,20 +27,19 @@ constructor(private productService: ProductService, private router: Router) {
 }
 
   ngOnInit() :void{
-    this.products = this.productService.products;
-
+    this.getProduct();
     this.filteredArray = this.products; // เริ่มต้นโชว์สินค้าทั้งหมด
-    this.getProductColors();
+    // this.getProductColors();
+    
 
   }
-  filterByType(type: string) {
-    this.selectedType = type; // เก็บประเภทที่ผู้ใช้เลือก
-    if (type === '') {
-      this.filteredArray = this.products; // ถ้าไม่ได้เลือกประเภทใดเลยให้แสดงสินค้าทั้งหมด
-    } else {
-      this.filteredArray = this.products.filter(product => product.type === type); // กรองสินค้าตามประเภทที่เลือก
-    }
+  getProduct(){
+    this.productService.getProducts().subscribe((products:ProductVariants[]) => {
+      console.log("Log pro:",products)
+      this.products = products;
+    });
   }
+
   showAllProducts() {
     this.selectedType = ''; // รีเซ็ตประเภทที่เลือก
     this.filteredArray = this.products; // แสดงสินค้าทั้งหมด
@@ -53,28 +47,5 @@ constructor(private productService: ProductService, private router: Router) {
   showProductDetails(product: any) {
     this.selectedProduct = product; // Set the selected product for details view
   }
-  
-  navigateToProductDetail(productId: string, productName: string) {
-    this.router.navigate(['/product-detail', productId, productName]);
-  // toggleDropdown() {
-  //   this.dropdown.nativeElement.classList.toggle('show');
-  // }
-  // getProductByID(id: number):any{
-  //   const products = this.id();
 
-
-  // }
-}
-getProductColors() {
-  const products = this.productService.products;
-  for (const product of products) {
-    if (product.hasOwnProperty('color') && product.color && product.color.length > 0) {
-      product.color.forEach((color: string) => {
-        if (!this.colors.includes(color)) {
-          this.colors.push(color);
-        }
-      });
-    }
-  }
-}
 }
